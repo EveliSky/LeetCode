@@ -1,0 +1,52 @@
+class Testcase:
+    def case(self):
+        J = [['abc'],
+             ['abc'],
+             ['abc']];
+        S = [['AaBbCc'],
+             ['AaBbCcDd'],
+             ['DdEeFf']];
+
+        return J,S
+
+
+
+class Solution:
+    def numJewelsInStones(self, J, S):
+        """
+        :type J: str
+        :type S: str
+        :rtype: int
+        """
+        result = 0;
+        for item in J:
+            try:
+                if(item in S):
+                    #pass;
+                    result += S.count((item));
+            except Exception as e:
+                continue;
+
+        return result;
+    
+    
+    
+from code import  Solution
+from testcase import Testcase
+
+J, S = Testcase().case();
+for j, s in zip(J, S):
+    print(j[0]);
+    print(s[0]);
+    print(Solution().numJewelsInStones(j[0], s[0]));
+
+for j, s in zip(J, S):
+    print(j[0]);
+    print(s[0]*2);
+    print(Solution().numJewelsInStones(j[0], s[0]*2));
+
+
+
+
+
+
