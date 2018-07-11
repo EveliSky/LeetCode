@@ -1,0 +1,65 @@
+class Testcase:
+    def case(self):
+        num = [[2,7,11,15],
+               [3,2,4],
+               [3,2,4],
+               [4,5,6,4],
+               [2,2,2,2],
+               [3,4,2,5],
+               [2,3,4,5],
+               [2, 3, 4, 5,3],
+               [2,3,-1,4],
+               [-2,-3,5,-2],
+               [-5,1,-1,5]];
+        target =[[9],
+                 [6],
+                 [5],
+                 [8],
+                 [9],
+                 [7],
+                 [7],
+                 [7],
+                 [3],
+                 [3],
+                 [6]];
+        return num,target;
+        
+        
+ class Solution:
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for i,item in enumerate(nums):
+            copy_nums = nums.copy();
+            del(copy_nums[i]);
+            try:
+                if (target - item) in copy_nums:
+                    pos1 = i;
+                    pos2 = nums.index(target - item,i+1);
+                    return [pos1,pos2];
+            except Exception as e:
+                continue;
+
+
+
+from code import  Solution
+from testcase import Testcase
+
+num,target = Testcase().case();
+for num_item,target_item in zip(num,target):
+    print(num_item);
+    print(target_item[0]);
+    print(Solution().twoSum(num_item,target_item[0]));
+
+for num_item,target_item in zip(num,target):
+    print([-1*x for x in num_item]);
+    print(-1*target_item[0]);
+    print(Solution().twoSum([-1*x for x in num_item],-1*target_item[0]));
+
+
+
+
+
